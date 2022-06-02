@@ -1,0 +1,21 @@
+strict digraph {
+pickAndPlaceAction [ label="('RobotABB_pass' \n 'RobotUR5_PickAndPlaceSkill_2:Move-UR5-Pick-Above_4:Move-UR5-Pick_5:Set-Endeffector-1_7:Move-UR5-Pick-Above_9:Move-UR5-Place-Above_11:Move-UR5-Place_14:Move-UR5-Place-Above')"]
+passAction [ label="('RobotABB_pass' \n 'RobotUR5_pass')"]
+passAction2 [ label="('RobotABB_pass' \n 'RobotUR5_pass')"]
+goHomeAction [ label="('RobotABB_pass' \n 'RobotUR5_SimpleMoveSkill_0:Move-UR5-Home')"]
+
+
+
+robotUR5CurrentState [label="Robot_RobotUR5_CurrentState"]
+pickAndPlaceCurrentState [label="Robot_RobotUR5_Skill_PickAndPlaceSkill_CurrentState"]
+
+
+
+
+robotUR5CurrentState -> passAction [ label="{Suspended,\n Halted,\n Running}"]
+robotUR5CurrentState -> pickAndPlaceCurrentState [ label="Ready"]
+
+pickAndPlaceCurrentState -> goHomeAction [ label="{Suspended,\n Halted}"]
+pickAndPlaceCurrentState -> passAction2 [ label="Running"]
+pickAndPlaceCurrentState -> pickAndPlaceAction [ label="Ready"]
+}
